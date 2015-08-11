@@ -59,7 +59,6 @@ LIST(APPEND UV_INCLUDE_PATHS
 LIST(APPEND UV_SOURCES
     src/fs-poll.c
     src/inet.c
-    src/queue.h
     src/threadpool.c
     src/uv-common.c
     src/version.c
@@ -83,7 +82,6 @@ IF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     )
     LIST(APPEND UV_SOURCES
         src/win/async.c
-        src/win/atomicops-inl.h
         src/win/core.c
         src/win/dl.c
         src/win/error.c
@@ -92,18 +90,14 @@ IF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
         src/win/getaddrinfo.c
         src/win/getnameinfo.c
         src/win/handle.c
-        src/win/handle-inl.h
-        src/win/internal.h
         src/win/loop-watcher.c
         src/win/pipe.c
         src/win/poll.c
         src/win/process-stdio.c
         src/win/process.c
         src/win/req.c
-        src/win/req-inl.h
         src/win/signal.c
         src/win/stream.c
-        src/win/stream-inl.h
         src/win/tcp.c
         src/win/thread.c
         src/win/timer.c
@@ -111,9 +105,7 @@ IF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
         src/win/udp.c
         src/win/util.c
         src/win/winapi.c
-        src/win/winapi.h
         src/win/winsock.c
-        src/win/winsock.h
     )
     LIST(APPEND UV_DEPENDENCIES
         ws2_32
@@ -145,20 +137,17 @@ ELSE()
     )
     LIST(APPEND UV_SOURCES
         src/unix/async.c
-        src/unix/atomic-ops.h
         src/unix/core.c
         src/unix/dl.c
         src/unix/fs.c
         src/unix/getaddrinfo.c
         src/unix/getnameinfo.c
-        src/unix/internal.h
         src/unix/loop-watcher.c
         src/unix/loop.c
         src/unix/pipe.c
         src/unix/poll.c
         src/unix/process.c
         src/unix/signal.c
-        src/unix/spinlock.h
         src/unix/stream.c
         src/unix/tcp.c
         src/unix/thread.c
@@ -169,6 +158,7 @@ ELSE()
     FIND_PACKAGE(Threads REQUIRED)
     LIST(APPEND UV_DEPENDENCIES
         ${CMAKE_THREAD_LIBS_INIT}
+        libdl
     )
     LIST(APPEND UV_INSTALL_HEADERS
         include/uv-unix.h
@@ -196,7 +186,6 @@ ELSE()
             src/unix/linux-core.c
             src/unix/linux-inotify.c
             src/unix/linux-syscalls.c
-            src/unix/linux-syscalls.h
             src/unix/proctitle.c
         )
         LIST(APPEND UV_INSTALL_HEADERS
@@ -296,8 +285,6 @@ IF(BUILD_TESTS)
         test/echo-server.c
         test/run-tests.c
         test/runner.c
-        test/runner.h
-        test/task.h
         test/test-active.c
         test/test-async.c
         test/test-async-null-cb.c
@@ -333,7 +320,6 @@ IF(BUILD_TESTS)
         test/test-ip6-addr.c
         test/test-ipc-send-recv.c
         test/test-ipc.c
-        test/test-list.h
         test/test-loop-handles.c
         test/test-loop-alive.c
         test/test-loop-close.c
@@ -423,12 +409,10 @@ IF(BUILD_TESTS)
     IF(CMAKE_SYSTEM_NAME STREQUAL "Windows")
         LIST(APPEND TEST_SOURCES
             test/runner-win.c
-            test/runner-win.h
         )
     ELSE()
         LIST(APPEND TEST_SOURCES
             test/runner-unix.c
-            test/runner-unix.h
         )
     ENDIF()
 
