@@ -16,10 +16,10 @@ mkdir build || exit $?
 cd build || exit $?
 
 # Run configuration
-cmake ../libuv || exit $?
+cmake -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE} ../libuv || exit $?
 
 # Build
-make || exit $?
+cmake --build . || exit $?
 
 # Test
 ./run-tests || exit $?

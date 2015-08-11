@@ -1,0 +1,40 @@
+# Versioning
+version: 1.7.0.{build}
+
+# Branches to build
+branches:
+  only:
+    - master
+
+# Configuration
+environment:
+  LIBUV_VERSION: 1.7.0
+  matrix:
+    - CMAKE_BUILD_TYPE: Debug
+    - CMAKE_BUILD_TYPE: Release
+
+# Set up clone path (this is the default, but just to make it explicit)
+clone_folder: c:\projects\libuv-cmake
+
+# Download libuv, run CMake, and build
+build_script:
+  - cd c:\projects\libuv-cmake
+  - git clone https://github.com/libuv/libuv.git
+  - cd libuv
+  - git checkout -q v%LIBUV_VERSION%
+  - cd ..
+  - mkdir build
+  - cd build
+  - cmake -G"Visual Studio 11" ..\libuv
+  - cmake --build . --config %CMAKE_BUILD_TYPE%
+
+# Run tests
+test_script:
+  - cd c:\projects\libuv-cmake\build
+  - run-tests
+
+# Send notifications
+notifications:
+  - provider: Email
+    to:
+      - jacob@havoc.io

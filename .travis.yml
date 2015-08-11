@@ -9,7 +9,11 @@ language: objective-c
 
 # Configuration
 env:
-  - LIBUV_VERSION=1.7.0
+  global:
+    - LIBUV_VERSION=1.7.0
+  matrix:
+    - CMAKE_BUILD_TYPE=Debug
+    - CMAKE_BUILD_TYPE=Release
 
 # Run the build and the test
 script:
