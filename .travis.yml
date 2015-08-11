@@ -13,7 +13,7 @@ env:
 
 # Run the build and the test
 script:
-  - posix-ci.sh
+  - ./posix-ci.sh
 
 # Send notifications
 notifications:
