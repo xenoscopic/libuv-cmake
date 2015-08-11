@@ -137,3 +137,11 @@ point you can do something like:
 
     TARGET_INCLUDE_DIRECTORIES(MyTarget PRIVATE ${LIBUV_INCLUDE_DIRS})
     TARGET_LINK_LIBRARIES(MyTarget PRIVATE ${LIBUV_LIBRARIES})
+
+
+## Future work
+
+- Implement pkg-config support using `CONFIGURE_FILE`.  This will take a bit of
+  work because we'll need to match the variables currently found in
+  `libuv.pc.in`.  In the mean time, this isn't a show-stopper —
+  `Findlibuv.cmake` works better anyway.
