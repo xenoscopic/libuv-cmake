@@ -1,11 +1,6 @@
 # Versioning
 version: 1.7.0.{build}
 
-# Branches to build
-branches:
-  only:
-    - master
-
 # Configuration
 environment:
   LIBUV_VERSION: 1.7.0
