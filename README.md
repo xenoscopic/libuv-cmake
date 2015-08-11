@@ -41,10 +41,10 @@ the following platforms and report your results, it would be much appreciated:
 
 There are two components to libuv-cmake:
 
-- `CMakeLists.txt`: This will build libuv and its associated tests, and
+- **CMakeLists.txt**: This will build libuv and its associated tests, and
   optionally install the library.  It is based off of the libuv Autotools build
   system, but updated to use CMake paradigms.
-- `Findlibuv.cmake`: This module will locate libuv so that you're project can
+- **Findlibuv.cmake**: This module will locate libuv so that you're project can
   link against it, even if your version of libuv wasn't built with libuv-cmake.
   This is much less finicky and more cross-platform than messing with
   pkg-config.  Alternatively, you can simply include libuv in your build tree
@@ -58,7 +58,7 @@ The components of libuv-cmake can be used individually or together.
 `Findlibuv.cmake` will even find a libuv installed with Autotools!
 
 
-### `CMakeLists.txt`
+### **CMakeLists.txt**
 
 To use `CMakeLists.txt`, simply plop it into your libuv source tree and build it
 like any other projects.  libuv-cmake is tagged to match libuv releases, so you
@@ -82,24 +82,24 @@ binary directly:
 This build system also adds a few nice features, which can be enabled/disabled
 at configuration time:
 
-- `BUILD_SHARED_LIBS`: Whether to build libuv as a shared library (`ON` by
+- **BUILD_SHARED_LIBS**: Whether to build libuv as a shared library (`ON` by
   default) or a static library (`OFF`)
-- `BUILD_TESTS`: Whether or not to build libuv tests (`ON` by default)
-- `BIN_INSTALL_DIR`: The subdirectory of `CMAKE_INSTALL_PREFIX` which will be
+- **BUILD_TESTS**: Whether or not to build libuv tests (`ON` by default)
+- **BIN_INSTALL_DIR**: The subdirectory of `CMAKE_INSTALL_PREFIX` which will be
   used to install runtime binaries (`bin` by default) (note that, on Windows,
   CMake considers `.dll` files to be runtime binaries, and will stick them in
   the binary install directory, while the corresponding export `.lib` files will
   be stuck in the library install directory)
-- `LIB_INSTALL_DIR`: The subdirectory of `CMAKE_INSTALL_PREFIX` which will be
+- **LIB_INSTALL_DIR**: The subdirectory of `CMAKE_INSTALL_PREFIX` which will be
   used to install libraries (`lib` by default)
-- `INCLUDE_INSTALL_DIR`: The subdirectory of `CMAKE_INSTALL_PREFIX` which will
+- **INCLUDE_INSTALL_DIR**: The subdirectory of `CMAKE_INSTALL_PREFIX` which will
   be used to install include headers (`include` by default)
-- `ENABLE_SOVERSION`: Whether or not to enable shared library name versioning,
+- **ENABLE_SOVERSION**: Whether or not to enable shared library name versioning,
   e.g. `libfoo.1.2.3.so` (only applies on systems which support this) (`OFF` by
   default)
 
 
-### `Findlibuv.cmake`
+### **Findlibuv.cmake**
 
 To use `Findlibuv.cmake`, you simply need to include it in your
 `CMAKE_MODULE_PATH`, e.g. by putting it in a subdirectory of your project called
