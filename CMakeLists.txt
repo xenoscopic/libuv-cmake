@@ -158,7 +158,7 @@ ELSE()
     FIND_PACKAGE(Threads REQUIRED)
     LIST(APPEND UV_DEPENDENCIES
         ${CMAKE_THREAD_LIBS_INIT}
-        libdl
+        dl
     )
     LIST(APPEND UV_INSTALL_HEADERS
         include/uv-unix.h
