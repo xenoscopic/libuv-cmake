@@ -30,9 +30,11 @@ build_script:
   - cmake --build . --config %CMAKE_BUILD_TYPE%
 
 # Run tests
+# NOTE: Must be done inside build directory because that's where test fixtures
+# are copied
 test_script:
   - cd c:\projects\libuv-cmake\build
-  - run-tests
+  - %CMAKE_BUILD_TYPE%\run-tests.exe
 
 # Send notifications
 notifications:

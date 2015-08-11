@@ -48,6 +48,11 @@ ENDFUNCTION()
 
 
 # Common configuration
+IF(BUILD_SHARED_LIBS)
+    LIST(APPEND UV_DEFINITIONS
+        BUILDING_UV_SHARED
+    )
+ENDIF()
 LIST(APPEND UV_INCLUDE_PATHS
     include
     src)
@@ -432,7 +437,28 @@ IF(BUILD_TESTS)
     TARGET_COMPILE_DEFINITIONS(run-tests PRIVATE ${UV_DEFINITIONS})
     TARGET_COMPILE_OPTIONS(run-tests PRIVATE ${UV_FLAGS})
     TARGET_INCLUDE_DIRECTORIES(run-tests PRIVATE ${UV_INCLUDE_PATHS})
-    TARGET_LINK_LIBRARIES(run-tests PRIVATE uv)
+    # NOTE: Some of the tests, specifically on Windows, use platform functions
+    # which require dependencies beyond just libuv, so we have to link to them
+    # as well.  In general, programs and libraries using libuv ONLY need to link
+    # against libuv, not these other dependencies.  The tests just happen to
+    # have dependencies byeond libuv.
+    TARGET_LINK_LIBRARIES(run-tests PRIVATE uv ${UV_DEPENDENCIES})
+
+    # HACK: Some of the test runner's tests use internal libuv functions which
+    # are not exported or visible through headers.  When using a static library,
+    # the test runner can declare prototypes for these functions and when it
+    # links everything will be happy.  This approach doesn't work for shared
+    # libraries though (at least on Windows) because the symbols won't be found
+    # in the .lib/.dll, even if their code is there, unless they are explicitly
+    # exported.  So adding this definition in the case of shared libraries
+    # causes those tests to be skipped.  Seems like maybe the libuv authors will
+    # fix this in the future.  It doesn't seem like this is necessary on POSIX
+    # systems, since symbols are exported by default, but libuv uses it on all
+    # platforms where shared libraries are being used, so let's follow their
+    # lead.
+    IF(BUILD_SHARED_LIBS)
+        TARGET_COMPILE_DEFINITIONS(run-tests PRIVATE USING_UV_SHARED=1)
+    ENDIF()
 
     # Copy test fixtures when building tester
     ADD_CUSTOM_COMMAND(TARGET run-tests PRE_BUILD
