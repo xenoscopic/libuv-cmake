@@ -16,9 +16,9 @@ perfect for this sort of thing.
 
 The module is currently tested<sup>1</sup> on the following platforms:
 
-| [Windows][win-link] | [OS X][osx-link] | [Linux][lin-link] |
-| :-----------------: | :--------------: | :---------------: |
-| ![win-badge]        | ![osx-badge]     | ![lin-badge]      |
+| Windows                           | OS X                           | Linux                           |
+| :-------------------------------: | :----------------------------: | :-----------------------------: |
+| [![Windows][win-badge]][win-link] | [![OS X][osx-badge]][osx-link] | [![Linux][lin-badge]][lin-link] |
 
 [win-badge]: https://ci.appveyor.com/api/projects/status/1v265vkb5edd2r75/branch/master?svg=true "AppVeyor build status"
 [win-link]:  https://ci.appveyor.com/project/havoc-io/libuv-cmake/branch/master "AppVeyor build status"
