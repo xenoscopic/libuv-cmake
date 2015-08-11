@@ -5,12 +5,7 @@
 # unavailable:
 #   http://docs.travis-ci.com/user/multi-os/
 #   http://blog.travis-ci.com/2014-05-13-multi-os-feature-available/
-language: c
-
-# Try on both OS X and Linux
-os:
-  - osx
-  - linux
+language: objective-c
 
 # Configuration
 env:

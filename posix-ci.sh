@@ -1,23 +1,28 @@
 #!/bin/sh
 
 # Download libuv
-wget https://github.com/libuv/libuv/archive/v${LIBUV_VERSION}.tar.gz -O libuv-${LIBUV_VERSION}.tar.gz || exit $?
+git clone https://github.com/libuv/libuv.git || exit $?
 
-# Unzip
-tar xzf libuv-${LIBUV_VERSION}.tar.gz || exit $?
+# Checkout the appropriate version
+cd libuv || exit $?
+git checkout -q v${LIBUV_VERSION} || exit $?
+cd .. || exit $?
 
 # Copy CMakeLists.txt
-cp CMakeLists.txt libuv-${LIBUV_VERSION} || exit $?
+cp CMakeLists.txt libuv || exit $?
 
 # Create build directory and move there
-mkdir libuv-${LIBUV_VERSION}/build || exit $?
-cd libuv-${LIBUV_VERSION}/build || exit $?
+mkdir build || exit $?
+cd build || exit $?
 
 # Run configuration
-cmake .. || exit $?
+cmake ../libuv || exit $?
 
 # Build
 make || exit $?
 
 # Test
 ./run-tests || exit $?
+
+# All done
+cd .. || exit $?
