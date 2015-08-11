@@ -32,9 +32,11 @@ build_script:
 # Run tests
 # NOTE: Must be done inside build directory because that's where test fixtures
 # are copied
+# HACK: Use 'call ...' to invoke the test runner because AppVeyor can't parse a
+# command starting with %
 test_script:
   - cd c:\projects\libuv-cmake\build
-  - %CMAKE_BUILD_TYPE%\run-tests.exe
+  - call %CMAKE_BUILD_TYPE%\run-tests.exe
 
 # Send notifications
 notifications:
