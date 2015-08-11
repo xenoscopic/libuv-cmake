@@ -7,6 +7,11 @@
 #   http://blog.travis-ci.com/2014-05-13-multi-os-feature-available/
 language: c
 
+# Try on both OS X and Linux
+os:
+  - osx
+  - linux
+
 # Configuration
 env:
   - LIBUV_VERSION=1.7.0
