@@ -22,7 +22,7 @@ SET(BIN_INSTALL_DIR bin CACHE PATH "Install prefix subdirectory for binaries")
 SET(LIB_INSTALL_DIR lib CACHE PATH "Install prefix subdirectory for libraries")
 SET(INCLUDE_INSTALL_DIR include CACHE PATH
     "Install prefix subdirectory for headers")
-SET(ENABLE_SOVERSION "Enable shared library versioning and symlinks" OFF)
+OPTION(ENABLE_SOVERSION "Enable shared library versioning and symlinks" OFF)
 
 
 # Create configuration containers
