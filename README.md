@@ -16,8 +16,16 @@ perfect for this sort of thing.
 
 The module is currently tested<sup>1</sup> on the following platforms:
 
+| [Windows][win-link] | [OS X][osx-link] | [Linux][lin-link] |
+| :-----------------: | :--------------: | :---------------: |
+| ![win-badge]        | ![osx-badge]     | ![lin-badge]      |
 
-TODO: Enable CI testing
+[win-badge]: https://ci.appveyor.com/api/projects/status/1v265vkb5edd2r75/branch/master?svg=true "AppVeyor build status"
+[win-link]:  https://ci.appveyor.com/project/havoc-io/libuv-cmake/branch/master "AppVeyor build status"
+[osx-badge]: https://travis-ci.org/havoc-io/libuv-cmake.svg?branch=master "Travis CI build status"
+[osx-link]:  https://travis-ci.org/havoc-io/libuv-cmake "Travis CI build status"
+[lin-badge]: https://circleci.com/gh/havoc-io/libuv-cmake/tree/master.svg?style=shield "CircleCI build status"
+[lin-link]:  https://ci.appveyor.com/project/havoc-io/libuv-cmake "CircleCI build status"
 
 <sup>
 1: Sadly, the libuv tests do not behave well on CI, partly because of
