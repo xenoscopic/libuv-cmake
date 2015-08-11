@@ -23,6 +23,7 @@ build_script:
   - cd libuv
   - git checkout -q v%LIBUV_VERSION%
   - cd ..
+  - copy CMakeLists.txt libuv
   - mkdir build
   - cd build
   - cmake -G"Visual Studio 11" ..\libuv
