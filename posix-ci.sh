@@ -22,7 +22,8 @@ cmake -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE} ../libuv || exit $?
 cmake --build . || exit $?
 
 # Test
-./run-tests || exit $?
+# NOTE: Currently intentionally disabled, see note in README.md
+# ./run-tests || exit $?
 
 # All done
 cd .. || exit $?

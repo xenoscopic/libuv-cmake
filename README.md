@@ -14,11 +14,18 @@ perfect for this sort of thing.
 
 ## Status
 
-The module is currently tested on the following platforms:
+The module is currently tested<sup>1</sup> on the following platforms:
 
 
 TODO: Enable CI testing
 
+<sup>
+1: Sadly, the libuv tests do not behave well on CI, partly because of
+restrictions on binding to sockets and partly because of several race conditions
+which seem to exist in the test themselves.  I think this is why libuv doesn't
+use CI testing.  Consequently, the tests are currently *built* on CI, but not
+run.  If you want to execute the tests, you'll have to build locally :cry:.
+</sup>
 
 Other platforms are not tested, but are supported!  If you can test on any of
 the following platforms and report your results, it would be much appreciated:
