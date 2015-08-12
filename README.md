@@ -141,6 +141,8 @@ point you can do something like:
 
 ## Future work
 
+- Implement better system library finding on POSIX, try to match libuv's
+  Makefile.am
 - Implement pkg-config support using `CONFIGURE_FILE`.  This will take a bit of
   work because we'll need to match the variables currently found in
   `libuv.pc.in`.  In the mean time, this isn't a show-stopper —
