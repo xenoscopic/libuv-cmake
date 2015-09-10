@@ -141,6 +141,7 @@ point you can do something like:
 
 ## Future work
 
+- Switch Linux testing to Travis CI now that multi-OS is widely available
 - Implement better system library finding on POSIX, try to match libuv's
   Makefile.am
 - Implement pkg-config support using `CONFIGURE_FILE`.  This will take a bit of
