@@ -1,19 +1,29 @@
 # Set the project language
-# NOTE: We're not really using Objective-C, just normal C, but Travis will only
-# send you to an OS X worker if you specify Objective-C or if you have multi-OS
-# builds enabled for your account, the latter of which are currently
-# unavailable:
-#   http://docs.travis-ci.com/user/multi-os/
-#   http://blog.travis-ci.com/2014-05-13-multi-os-feature-available/
-language: objective-c
+language: c
+
+# Set test platforms
+os:
+  - osx
+  - linux
+
+# Enable use of container-based infrastructure for Linux
+sudo: false
 
 # Configuration
 env:
   global:
-    - LIBUV_VERSION=1.7.0
+    - LIBUV_VERSION=1.7.4
   matrix:
     - CMAKE_BUILD_TYPE=Debug
     - CMAKE_BUILD_TYPE=Release
+
+# Upgrade CMake since Travis CI uses Ubuntu 12.04 with CMake 2.8.7
+addons:
+  apt:
+    sources:
+      - kalakris-cmake
+    packages:
+      - cmake
 
 # Run the build and the test
 script:

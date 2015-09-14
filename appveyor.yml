@@ -1,9 +1,9 @@
 # Versioning
-version: 1.7.0.{build}
+version: 1.7.4.{build}
 
 # Configuration
 environment:
-  LIBUV_VERSION: 1.7.0
+  LIBUV_VERSION: 1.7.4
   matrix:
     - CMAKE_BUILD_TYPE: Debug
     - CMAKE_BUILD_TYPE: Release

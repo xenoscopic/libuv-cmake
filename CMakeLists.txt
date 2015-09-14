@@ -12,7 +12,7 @@ PROJECT(libuv)
 
 
 # Set the version
-SET(LIBUV_VERSION 1.7.0)
+SET(LIBUV_VERSION 1.7.4)
 
 
 # Set up options
@@ -337,8 +337,10 @@ IF(BUILD_TESTS)
         test/test-ping-pong.c
         test/test-pipe-bind-error.c
         test/test-pipe-connect-error.c
+        test/test-pipe-connect-multiple.c
         test/test-pipe-connect-prepare.c
         test/test-pipe-getsockname.c
+        test/test-pipe-pending-instances.c
         test/test-pipe-sendmsg.c
         test/test-pipe-server-close.c
         test/test-pipe-close-stdout-read-stdin.c
@@ -375,7 +377,6 @@ IF(BUILD_TESTS)
         test/test-tcp-open.c
         test/test-tcp-read-stop.c
         test/test-tcp-shutdown-after-write.c
-        test/test-tcp-squelch-connreset.c
         test/test-tcp-unexpected-read.c
         test/test-tcp-oob.c
         test/test-tcp-write-to-half-open-connection.c
