@@ -4,6 +4,7 @@
 if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   sudo add-apt-repository --yes ppa:smspillaz/cmake-3.0.2 || exit $?
   sudo apt-get update -qq || exit $?
+  sudo apt-get purge -qq cmake || exit $?
   sudo apt-get install cmake || exit $?
 fi
 
