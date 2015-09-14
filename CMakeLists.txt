@@ -7,6 +7,13 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
 
 
+# Silence CMake warnings by adopting modern behavior for MACOSX_RPATH on newer
+# versions of CMake
+IF(POLICY CMP0042)
+    CMAKE_POLICY(SET CMP0042 NEW)
+ENDIF()
+
+
 # Create the project
 PROJECT(libuv)
 

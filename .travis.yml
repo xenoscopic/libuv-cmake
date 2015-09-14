@@ -6,8 +6,9 @@ os:
   - osx
   - linux
 
-# Enable use of container-based infrastructure for Linux
-sudo: false
+# Disable use of container-based infrastructure for Linux, because we need to
+# add a non-whitelisted PPA for a newer version of CMake
+sudo: true
 
 # Configuration
 env:
